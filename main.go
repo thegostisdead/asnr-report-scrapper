@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 func main() {
@@ -30,5 +31,23 @@ func main() {
 	}
 
 	fmt.Println("Interval will be :", interval)
+
+	urls, err := searchWithRange(&interval)
+
+	output := config.out
+
+	if output == "" {
+		ex, err := os.Executable()
+		if err != nil {
+			panic(err)
+		}
+		output = filepath.Dir(ex)
+	}
+
+	err := DownloadExtractSave(urls, config.out)
+
+	if err != nil {
+		//
+	}
 
 }

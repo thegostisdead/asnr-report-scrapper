@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -111,10 +112,46 @@ func buildSearchURL(interval *Interval) (string, error) {
 func searchWithRange(interval *Interval) ([]url.URL, error) {
 	toFetch, err := buildSearchURL(interval)
 
+	"https://reglementation-controle.asnr.fr/controle/actualites-du-controle/installations-nucleaires/avis-d-incident-des-installations-nucleaires?publication_date_year%5Bfrom%5D=1979&publication_date_year%5Bto%5D=2009&page=89"
+
+	"&page=89"
+
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(toFetch)
 	return nil, nil
+
+}
+
+func htmlToTemplate(closedReader, output string) {
+
+	// extract
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+
+	}
+
+	renderedContent, err := render(string(data), ReportTemplate{})
+	if err != nil {
+		return
+	}
+
+	//
+	f, err := os.Create(output)
+
+	if err != nil {
+		return
+	}
+
+	w := bufio.NewWriter(f)
+	_, err = w.WriteString(renderedContent)
+
+	if err != nil {
+		return
+	}
+
+	defer f.Close()
 
 }
