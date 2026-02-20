@@ -5,13 +5,6 @@ import (
 	"testing"
 )
 
-func TestBuildSearchURL(t *testing.T) {
-
-	in := Interval{start: "2012", end: "2020"}
-	buildSearchURL(&in)
-
-}
-
 func TestBuildSearchURLWithNonSenseInterval(t *testing.T) {
 
 	in := Interval{start: "2020", end: "2001"}

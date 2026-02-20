@@ -29,6 +29,6 @@ func main() {
 		}
 	}
 
-	fmt.Println("Interval will be : %s", interval)
+	fmt.Println("Interval will be :", interval)
 
 }
