@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  Linter:
+  BuildAndTest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +20,6 @@ jobs:
         run: go mod download
 
       - name: build
-        run: cd ./app && go build -v
+        run: go build -v
 
       - run: go test
